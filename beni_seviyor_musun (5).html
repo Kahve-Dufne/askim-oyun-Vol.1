@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#090414">
+<title>Beni seviyor musun? 💜</title>
+<style>
+:root{--bg:#090414;--purple:#9b4dff;--pink:#e4a0ff;--deep:#180b2d}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#fff}
+body{overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#24103f 0%,#10071e 45%,#05030b 100%);display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+.sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.sparkles span{position:absolute;color:#b86bff;opacity:.55;animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-22px) rotate(18deg);opacity:.9}}
+.wrap{position:relative;width:min(92vw,480px);height:min(94dvh,820px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px 12px;gap:14px}
+.top-penguin{font-size:clamp(62px,16vw,92px);filter:drop-shadow(0 0 18px #8c3cff);animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+h1{font-size:clamp(36px,9vw,54px);line-height:1.05;margin:0;color:#fff;text-shadow:0 0 8px #d7a0ff,0 0 28px #8d32ff;letter-spacing:-1px}
+.subtitle{color:#d7b6ff;font-size:15px;margin:0}
+.buttons{position:relative;width:100%;height:100px;max-width:390px;margin-top:6px}
+button{border:0;color:white;font-size:21px;font-weight:750;border-radius:999px;padding:15px 25px;min-width:132px;box-shadow:0 0 18px #963dff66;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
+#yes{position:absolute;left:4%;top:12px;background:linear-gradient(135deg,#bd53ff,#7025d9);border:2px solid #e3b7ff;box-shadow:0 0 22px #a43dff99}
+#no{position:absolute;right:4%;top:12px;background:#211431;border:2px solid #a875ce;color:#d9b9ff;transition:left .16s ease,top .16s ease,right .16s ease}
+.hint{font-size:13px;color:#bc8de8;margin:0}
+.penguin-bottom{font-size:75px;filter:drop-shadow(0 0 14px #8039cf);margin-top:2px}
+.footer{border:1px solid #63318b;border-radius:20px;padding:13px 16px;color:#d9b6ff;background:#10071caa;font-size:14px;max-width:360px}
+.counter{font-size:12px;color:#9f7bc4}
+.overlay{position:fixed;inset:0;background:#08030edb;display:none;align-items:center;justify-content:center;padding:24px;z-index:5}
+.overlay.show{display:flex}
+.modal{max-width:400px;width:100%;text-align:center;padding:28px 22px;border:1px solid #b86bff;border-radius:28px;background:linear-gradient(160deg,#291044,#10071e);box-shadow:0 0 50px #852eff55}
+.modal .emoji{font-size:76px}
+.modal h2{color:#f0d5ff;font-size:30px;margin:10px 0}
+.modal p{color:#e1c8fa;line-height:1.6}
+.modal button{background:linear-gradient(135deg,#b64cff,#6c27d2);border:1px solid #e1b8ff}
+.heart{position:fixed;bottom:-40px;pointer-events:none;animation:rise 2.5s ease-out forwards;z-index:4}
+.angry-toast{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.7);z-index:20;display:none;min-width:220px;padding:18px 22px;border:2px solid #b66cff;border-radius:24px;background:#160824;color:#fff;text-align:center;box-shadow:0 0 35px #a43dff99;font-weight:850;font-size:22px;pointer-events:none}
+.angry-toast.show{display:block;animation:angryPop .75s ease both}
+.angry-toast .angry-penguin{font-size:64px;display:block;filter:drop-shadow(0 0 12px #a43dff)}
+@keyframes angryPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(-8deg)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.08) rotate(3deg)}35%,80%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}100%{opacity:0;transform:translate(-50%,-50%) scale(.9)}}
+@keyframes rise{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+@media(max-height:650px){.wrap{gap:8px}.top-penguin{font-size:56px}.penguin-bottom{font-size:50px}h1{font-size:36px}.buttons{height:85px}.footer{padding:8px 12px}}
+</style>
+</head>
+<body>
+<div class="sparkles" aria-hidden="true">
+<span style="left:8%;top:13%;font-size:22px">♡</span><span style="left:83%;top:12%;font-size:27px;animation-delay:-2s">✦</span>
+<span style="left:13%;top:57%;font-size:18px;animation-delay:-3s">♥</span><span style="left:88%;top:63%;font-size:24px;animation-delay:-1s">♡</span>
+<span style="left:74%;top:82%;font-size:18px;animation-delay:-4s">✧</span><span style="left:24%;top:83%;font-size:18px;animation-delay:-2s">✦</span>
+</div>
+<main class="wrap">
+  <div class="top-penguin" aria-label="penguen">🐧💜</div>
+  <p class="subtitle">Sana minicik ama çok önemli bir sorum var...</p>
+  <h1>Beni<br>seviyor musun?</h1>
+  <div class="buttons" id="arena">
+    <button id="yes">💜 Evet</button>
+    <button id="no">Hayır 🙈</button>
+  </div>
+  <p class="hint" id="hint">Bir cevap seç bakalım... 👀</p>
+  <div class="penguin-bottom">🐧</div>
+  <div class="footer">Hayır'a tıklamaya çalışma...<br>çünkü ben seni çok seviyorum. 💜</div>
+  <div class="counter" id="counter">Hayır'a tıklama denemeleri: 0</div>
+</main>
+<div class="angry-toast" id="angryToast"><span class="angry-penguin">🐧😠</span>HAYIRDIR OĞLUM</div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="emoji">🐧💜🐧</div>
+    <h2>Biliyordum! 💖</h2>
+    <p>Ben de seni çooook seviyorum!<br>İyi ki hayatımdasın, güzelim. 💜<br>(Nude gönder ozaman)<br><span style="font-size:24px">♡ ♡ ♡</span></p>
+    <button id="again">Bir daha sarılalım 🥹</button>
+  </div>
+</div>
+<script>
+const no=document.getElementById('no'), yes=document.getElementById('yes'), arena=document.getElementById('arena');
+const counter=document.getElementById('counter'), hint=document.getElementById('hint'), overlay=document.getElementById('overlay');
+let attempts=0;
+let angryTimer;
+function showAngryPenguin(){const toast=document.getElementById('angryToast');toast.classList.remove('show');void toast.offsetWidth;toast.classList.add('show');clearTimeout(angryTimer);angryTimer=setTimeout(()=>toast.classList.remove('show'),850)}
+function dodge(e){
+  if(e)e.preventDefault();
+  attempts++;counter.textContent="Hayır'a tıklama denemeleri: "+attempts;showAngryPenguin();
+  // Butonu tüm görünür ekran boyunca hareket ettir; kenarlardan taşmasını önle.
+  no.style.position='fixed';
+  no.style.right='auto';
+  const margin=12;
+  const maxX=Math.max(margin,window.innerWidth-no.offsetWidth-margin);
+  const maxY=Math.max(margin,window.innerHeight-no.offsetHeight-margin);
+  const currentX=no.getBoundingClientRect().left;
+  const currentY=no.getBoundingClientRect().top;
+  let x=margin+Math.random()*(maxX-margin);
+  let y=margin+Math.random()*(maxY-margin);
+  // Mümkünse eski konumundan belirgin biçimde uzağa kaçsın.
+  for(let i=0;i<8 && Math.hypot(x-currentX,y-currentY)<Math.min(150,window.innerWidth/3);i++){
+    x=margin+Math.random()*(maxX-margin);
+    y=margin+Math.random()*(maxY-margin);
+  }
+  no.style.left=Math.round(x)+'px';
+  no.style.top=Math.round(y)+'px';
+  no.style.zIndex='10';
+  hint.textContent=['Hihihi, yakalayamadın! 😈','Biraz zor olacak galiba... 💜','Bence “Evet”e bassan daha kolay! 🐧','Kaç kaç kaç! 💨'][Math.min(attempts-1,3)];
+  if(attempts%3===0)makeHearts(3);
+}
+// Telefonda tek dokunuşta yalnızca bir kez kaç; masaüstünde fareyle de çalışır.
+no.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')dodge(e)});
+// iOS Safari'de dokunmatik olaylar: pointerdown ile kaçır, click yedeği yalnız klavye/erişilebilirlik için.
+no.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){e.preventDefault();dodge(e)}});
+no.addEventListener('click',e=>{if(e.detail===0)dodge(e)});
+function makeHearts(n=18){
+ for(let i=0;i<n;i++){const h=document.createElement('span');h.className='heart';h.textContent=['💜','💖','💕','♡'][Math.floor(Math.random()*4)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(18+Math.random()*24)+'px';h.style.animationDuration=(1.8+Math.random()*1.6)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),3600)}
+}
+function acceptLove(e){if(e)e.preventDefault();overlay.classList.add('show');makeHearts(35)}
+// iPhone Safari click olayını dokunma sonrası üretir; çift tetiklemeyi önlemek için tek handler kullan.
+yes.addEventListener('click',acceptLove);
+document.getElementById('again').addEventListener('click',()=>{overlay.classList.remove('show');makeHearts(12)});
+// Yerel dosyada iOS ekran boyutu değişirse içeriği görünür alanda tut.
+window.addEventListener('resize',()=>{if(no.style.position==='fixed'){const r=no.getBoundingClientRect();no.style.left=Math.max(12,Math.min(r.left,window.innerWidth-no.offsetWidth-12))+'px';no.style.top=Math.max(12,Math.min(r.top,window.innerHeight-no.offsetHeight-12))+'px'}});
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('show')});
+</script>
+</body>
+</html>
